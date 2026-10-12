@@ -86,7 +86,15 @@ function clearCart() {
 
 function renderCart() {
   cartItemsEl.innerHTML = "";
+
+  if (!cart.length) {
+    emptyMsg.hidden = false;
+    badgeEl.textContent = 0;
+    return;
+  }
+
   let total = 0;
+
   cart.forEach((item) => {
     const lineTotal = item.price * item.qty;
     const li = document.createElement("li");
